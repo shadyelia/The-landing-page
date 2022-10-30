@@ -39,6 +39,7 @@
   letter-spacing: 0.4px;
   text-decoration: none;
   color: #577165;
+  cursor: pointer;
 }
 
 #navmenu li > a:hover {

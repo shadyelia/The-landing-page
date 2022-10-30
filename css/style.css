@@ -1,1 +1,15 @@
-@import "./header.css"
+@import "./layout.css";
+
+.active {
+    background-color: #103122;
+}
+
+.card {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    transition: 0.3s;
+    border-radius: 5px;
+    min-height: 12em;
+    text-align: center;
+    place-items: center;
+    width: 100%;
+}
