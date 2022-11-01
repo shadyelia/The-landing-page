@@ -1,7 +1,9 @@
 @import "./header.css";
+@import "./footer.css";
 
 html, body {
     height: 99%;
+    background-color: #181a1b;
 }
 
 .button {
