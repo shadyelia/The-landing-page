@@ -44,6 +44,7 @@ const scrollToSection = (evt) => {
     const sectionNumber = +id[id.length - 1];
     const section = document.getElementById("section" + sectionNumber);
     section.scrollIntoView();
+    window.scrollBy(0,-140)
   }
 };
 
@@ -63,7 +64,21 @@ const scrollFunction = () => {
 };
 
 const showTopButton = () => {
-  if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
+  let body = document.body;
+  let html = document.documentElement;
+
+  let maxHeight = Math.max(
+    body.scrollHeight,
+    body.offsetHeight,
+    html.clientHeight,
+    html.scrollHeight,
+    html.offsetHeight
+  );
+
+  if (
+    document.body.scrollTop > maxHeight * 0.5 ||
+    document.documentElement.scrollTop > maxHeight * 0.5
+  ) {
     topButton.style.display = "block";
   } else {
     topButton.style.display = "none";
