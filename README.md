@@ -7,9 +7,13 @@
 
 <br />
 <br />
-- You can add extra sections by adding `header` and `text` to data/data.json. 
+- You can edit existing data by editing "data/data.json" or adding new sections by adding a new object<br />
+ { "Id" : unique_number,<br />
+   "header": "",<br />
+   "text": "",<br />
+ }
 <br />
 <br />
 
-- Website link: https://shadyelia.github.io/The-landing-page/
+- Website link: <https://shadyelia.github.io/The-landing-page/>
 <br />
