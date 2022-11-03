@@ -1,7 +1,7 @@
 .header {
   grid-area: header;
   display: grid;
-  border-bottom: 5px solid #dad7d2;
+  border-bottom: 5px solid black;
   position: fixed;
   top: 0;
   width: 100%;
@@ -11,7 +11,7 @@
   margin-left: 1em;
   display: flex;
   position: relative;
-  color: #dad7d2;
+  color: black;
 }
 
 .logout-link {
@@ -28,7 +28,7 @@
 }
 
 #navmenu {
-  background-color: #5c00a8;
+  background-color: #dcffd3;
 }
 
 #nav-bar-list {
@@ -57,12 +57,12 @@
 }
 
 .active {
-  background-color: #371d4d83;
+  background-color: #1c3a2c;
 }
 
 @media (min-width: 450px) {
   #navmenu {
-    background-color: #5c00a8;
+    background-color: #dcffd3;
     display: inline-block;
     position: static;
     width: auto;
