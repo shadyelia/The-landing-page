@@ -1,79 +1,80 @@
-.header {
-  grid-area: header;
-  display: grid;
-  border-bottom: 5px solid black;
+/* Header Styles */
+.page__header {
+  background: #fff;
   position: fixed;
   top: 0;
   width: 100%;
+  z-index: 5;
 }
 
-.header-text {
-  margin-left: 1em;
-  display: flex;
-  position: relative;
-  color: black;
-}
-
-.logout-link {
-  font-size: medium;
-  text-decoration: none;
-  position: absolute;
-  right: 0;
-  text-decoration: none;
-}
-
-.logout-link:hover {
-  color: #577165;
-  text-decoration: underline;
-}
-
-#navmenu {
-  background-color: #dcffd3;
-}
-
-#nav-bar-list {
+.navbar__menu ul {
   list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
 }
 
-#navmenu li {
-  padding: 0px;
-  transition: background-color 0.2s ease;
-  margin-right: 5px;
-}
-
-#navmenu li > a {
-  font-size: 14px;
-  line-height: 20px;
-  font-weight: 600;
-  letter-spacing: 0.4px;
-  text-decoration: none;
-  color: #577165;
+.navbar__menu li {
+  float: left;
   cursor: pointer;
-  font-size: larger;
 }
 
-#navmenu li > a:hover {
-  color: #375547;
+.navbar__menu li a {
+  display: none;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+#navbar__list {
+  display: grid;
+}
+
+.navbar__menu .responsive li a {
+  float: none;
+  display: block;
+  text-align: left;
 }
 
 .active {
-  background-color: #1c3a2c;
+  background-color: #04aa6d;
 }
 
-@media (min-width: 450px) {
-  #navmenu {
-    background-color: #dcffd3;
-    display: inline-block;
-    position: static;
-    width: auto;
-    max-width: 100%;
-  }
+.navbar__menu .menu__link {
+  display: block;
+  padding: 1em;
+  font-weight: bold;
+  text-decoration: none;
+  color: #000;
+}
 
-  #nav-bar-list {
-    display: flex;
-    flex-grow: 1;
-    align-items: center;
-    margin-top: 2px;
-    list-style-type: none;
+.navbar__menu .menu__link:hover {
+  background: #333;
+  color: #fff;
+  transition: ease 0.3s all;
+}
+
+.icon {
+  display: block !important;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+@media only screen and (min-width: 35em) {
+  .icon {
+    display: none !important;
+  }
+  .navbar__menu li a {
+    display: inline-block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+  }
+  #navbar__list {
+    display: block;
   }
 }

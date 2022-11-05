@@ -1,40 +1,13 @@
-@import "./header.css";
-@import "./footer.css";
-
-html, body {
-    height: 99%;
-    background-color: #a8bd99f7;
+main {
+  margin: 10vh 1em 10vh;
 }
 
-.button {
-    background-color: transparent;
-    border-radius: 12px;
-    border: none;
-    color: #a8bd99f7;
-    padding: 20px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    margin: 4px 2px;
-    cursor: pointer;
+.main-hero {
+  min-height: 40vh;
+  padding-top: 3em;
 }
 
-.container {
-    display: grid;
-    grid-template-columns: 100%;
-    grid-template-rows: 2fr 15fr 1fr;
-    grid-template-areas:
-        "header"
-        "content"
-        "footer";
-    background: -webkit-linear-gradient(top, #dcd6b2, #577165);
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    height: 100%;
-    width: 100%;
-    overflow: hidden;
+section {
+  position: relative;
+  min-height: 80vh;
 }

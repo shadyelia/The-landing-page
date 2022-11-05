@@ -1,19 +1,14 @@
 import data from "../data/data.json" assert { type: "json" };
 
 const bindData = () => {
-  const navBarList = document.getElementById("nav-bar-list");
+  const navBarList = document.getElementById("navbar__list");
   const sections = document.getElementById("sections-list");
-
-  const virtualNavBar = document.createDocumentFragment();
-  const virtualSections = document.createDocumentFragment();
-
   data.forEach((element) => {
     addNavBarItem(navBarList, element);
     addSectionItem(sections, element);
   });
 
-  //navBarList = virtualNavBar;
-  //sections = virtualSections;
+  addNavMenuItem(navBarList);
 };
 
 const addNavBarItem = (navBarList, element) => {
@@ -28,12 +23,41 @@ const addNavBarItem = (navBarList, element) => {
 };
 
 const addSectionItem = (sections, element) => {
+  const sectionIem = document.createElement("section");
+  const divItem = document.createElement("div");
+  const headerItem = document.createElement("h2");
   const paragrahic = document.createElement("p");
 
+  headerItem.innerText = element["header"];
   paragrahic.innerText = element["text"];
-  paragrahic.className = "card";
-  paragrahic.id = "section" + element["Id"];
-  sections.appendChild(paragrahic);
+
+  sectionIem.id = "section" + element["Id"];
+  divItem.className = "landing__container";
+
+  sectionIem.appendChild(divItem);
+  divItem.appendChild(headerItem);
+  divItem.appendChild(paragrahic);
+  sections.appendChild(sectionIem);
+};
+
+const addNavMenuItem = (navBarList) => {
+  const navBarItem = document.createElement("li");
+  const navBarLink = document.createElement("a");
+
+  navBarLink.className = "icon";
+  navBarLink.innerHTML = "&#9776;";
+  navBarItem.appendChild(navBarLink);
+  navBarItem.addEventListener("click", openMenu);
+  navBarList.appendChild(navBarItem);
+};
+
+const openMenu = () => {
+  let navList = document.getElementById("navbar__list");
+  if (navList.className === "") {
+    navList.className += "responsive";
+  } else {
+    navList.className = "";
+  }
 };
 
 const scrollToSection = (evt) => {
@@ -44,7 +68,13 @@ const scrollToSection = (evt) => {
     const sectionNumber = +id[id.length - 1];
     const section = document.getElementById("section" + sectionNumber);
     section.scrollIntoView();
-    window.scrollBy(0,-140)
+    
+    let navList = document.getElementById("navbar__list");
+    if (navList.className === "") {
+      navList.className += "responsive";
+    } else {
+      navList.className = "";
+    }
   }
 };
 
@@ -90,7 +120,7 @@ const changeActiveNavItem = () => {
   const sectionsList = document.getElementById("sections-list");
   if (sectionsList != null) {
     const sections = sectionsList.children;
-    for (var i = 0; i < sections.length; i++) {
+    for (let i = 0; i < sections.length; i++) {
       const section = sections[i];
       const sectionHeight = section.offsetHeight;
       const sectionTop = section.offsetTop - 150;
@@ -100,11 +130,17 @@ const changeActiveNavItem = () => {
       if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
         document
           .getElementById("navBarItem" + sectionNumber)
-          .children[0].classList.add("active");
+          .classList.add("active");
+        document
+          .getElementById("section" + sectionNumber)
+          .classList.add("your-active-class");
       } else {
         document
           .getElementById("navBarItem" + sectionNumber)
-          .children[0].classList.remove("active");
+          .classList.remove("active");
+        document
+          .getElementById("section" + sectionNumber)
+          .classList.remove("your-active-class");
       }
     }
   }
