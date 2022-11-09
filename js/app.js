@@ -4,18 +4,18 @@ const bindData = () => {
   const navBarList = document.getElementById("navbar__list");
   const sections = document.getElementById("sections-list");
   data.forEach((element) => {
-    addNavBarItem(navBarList, element);
-    addSectionItem(sections, element);
+    addNavBarItem(navBarList, element); //showing up the nav list on the list by appeding them to nav list
+    addSectionItem(sections, element); //showing up the sections by appening them to section list 
   });
 
-  addNavMenuItem(navBarList);
+  addNavMenuItem(navBarList); //append the menu item for the mobile video 
 };
 
 const addNavBarItem = (navBarList, element) => {
   const navBarItem = document.createElement("li");
   const navBarLink = document.createElement("a");
 
-  navBarLink.innerHTML = element["header"];
+  navBarLink.innerHTML = element["header"]; //mapping the text to nav link
   navBarItem.appendChild(navBarLink);
   navBarItem.id = "navBarItem" + element["Id"];
   navBarItem.addEventListener("click", scrollToSection);
@@ -23,6 +23,7 @@ const addNavBarItem = (navBarList, element) => {
 };
 
 const addSectionItem = (sections, element) => {
+  //building up the section structure <section><div><h2></h2><p></p></div></section>
   const sectionIem = document.createElement("section");
   const divItem = document.createElement("div");
   const headerItem = document.createElement("h2");
@@ -41,6 +42,7 @@ const addSectionItem = (sections, element) => {
 };
 
 const addNavMenuItem = (navBarList) => {
+  // building up the nav item structure <li><a></a></li>
   const navBarItem = document.createElement("li");
   const navBarLink = document.createElement("a");
 
@@ -52,6 +54,7 @@ const addNavMenuItem = (navBarList) => {
 };
 
 const openMenu = () => {
+  // open nav items in the mobile view
   let navList = document.getElementById("navbar__list");
   if (navList.className === "") {
     navList.className += "responsive";
@@ -61,13 +64,14 @@ const openMenu = () => {
 };
 
 const scrollToSection = (evt) => {
+  //clicking on nav item to scroll the screen to the required section
   let element = evt.target;
   if (element != null) {
     if (element.nodeName === "A") element = element.parentNode;
     const id = element.id;
     const sectionNumber = +id[id.length - 1];
     const section = document.getElementById("section" + sectionNumber);
-    section.scrollIntoView();
+    section.scrollIntoView({ behavior: 'smooth' }); // to apply smootly scrolling
     
     let navList = document.getElementById("navbar__list");
     if (navList.className === "") {
@@ -79,13 +83,16 @@ const scrollToSection = (evt) => {
 };
 
 const addTopButtonFunctionality = () => {
+  // adding the top button to go back to the start of the page
   let topButton = document.getElementById("topButton");
   topButton.addEventListener("click", scrollToTop);
 };
 
 const scrollToTop = () => {
-  document.body.scrollTop = 0;
-  document.documentElement.scrollTop = 0;
+  window.scrollTo({
+    top: 0,
+    behavior: 'smooth',
+  })
 };
 
 const scrollFunction = () => {
@@ -94,6 +101,7 @@ const scrollFunction = () => {
 };
 
 const showTopButton = () => {
+  //showing top button when user scroll to a threshold
   let body = document.body;
   let html = document.documentElement;
 
@@ -116,6 +124,7 @@ const showTopButton = () => {
 };
 
 const changeActiveNavItem = () => {
+  // appending the active classes based on the user location
   const scrollY = window.pageYOffset;
   const sectionsList = document.getElementById("sections-list");
   if (sectionsList != null) {
